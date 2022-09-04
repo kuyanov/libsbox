@@ -267,8 +267,8 @@ void Container::serve() {
 
         wait_for_slave();
 
-        for (auto &bind : binds) {
-            bind.umount_if_mounted();
+        for (size_t i = binds.size() - 1; i < binds.size(); --i) {
+            binds[i].umount_if_mounted();
         }
 
         delete cpuacct_controller_;
